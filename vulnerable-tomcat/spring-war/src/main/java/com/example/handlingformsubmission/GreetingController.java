@@ -1,5 +1,9 @@
 package com.example.handlingformsubmission;
 
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +23,24 @@ public class GreetingController {
 	public String greetingSubmit(@ModelAttribute Greeting greeting, Model model) {
 		model.addAttribute("greeting", greeting);
 		return "result";
+	}
+	@PostMapping("/botnet")
+	public String botnetConnect(Model model) {
+		Botnet botnet = new Botnet();
+		botnet.setIp("1.123.37.68");
+		botnet.setPort("80");
+		model.addAttribute("botnet", botnet);
+		URL url;
+		try {
+			url = new URL("http://1.123.37.68:80");
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("GET");
+			System.out.println("Sending request to botnet");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "botnet";
 	}
 
 }
