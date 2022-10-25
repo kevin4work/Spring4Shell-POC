@@ -15,15 +15,9 @@ public class GreetingController {
 
 	@GetMapping("/greeting")
 	public String greetingForm(Model model) {
-		model.addAttribute("greeting", new Greeting());
 		return "greeting";
 	}
 
-	@PostMapping("/greeting")
-	public String greetingSubmit(@ModelAttribute Greeting greeting, Model model) {
-		model.addAttribute("greeting", greeting);
-		return "result";
-	}
 	@PostMapping("/botnet")
 	public String botnetConnect(Model model) {
 		Botnet botnet = new Botnet();
@@ -43,7 +37,7 @@ public class GreetingController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "botnet";
+		return "greeting";
 	}
 
 }
