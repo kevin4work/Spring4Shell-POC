@@ -97,13 +97,13 @@ margin-left: 28%;
 <i class="fas fa-at"></i>
 <i class="fas fa-mail-bulk"></i>
 </div>
-<form action="#" th:action="@{/botnet}"  method="post">
+<form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
 <h1>An Unprotected Form</h1>
 <div class="info">
-<input class="fname" type="text" name="name" placeholder="Full name">
-<input type="text" name="name" placeholder="Email">
-<input type="text" name="name" placeholder="Phone number">
-<input type="text" name="name" placeholder="Credit Card Number">
+<input class="fname" type="text" th:field="*{name}" placeholder="Full name">
+<input type="text" th:field="*{email}"placeholder="Email">
+<input type="text" th:field="*{phone}" placeholder="Phone number">
+<input type="text" th:field="*{cardNo}" placeholder="Credit Card Number">
 </div>
 <button type="submit" href="/">Connect to Botnet</button>
 <div th:if="${botnet}">
@@ -115,4 +115,3 @@ margin-left: 28%;
 </div>
 </body>
 </html>
-

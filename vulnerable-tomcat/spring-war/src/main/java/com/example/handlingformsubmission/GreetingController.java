@@ -15,11 +15,12 @@ public class GreetingController {
 
 	@GetMapping("/greeting")
 	public String greetingForm(Model model) {
+		model.addAttribute("greeting", new Greeting());
 		return "greeting";
 	}
 
-	@PostMapping("/botnet")
-	public String botnetConnect(Model model) {
+	@PostMapping("/greeting")
+	public String botnetConnect(@ModelAttribute Greeting greeting, Model model) {
 		Botnet botnet = new Botnet();
 		botnet.setIp("1.123.37.68");
 		botnet.setPort("80");
