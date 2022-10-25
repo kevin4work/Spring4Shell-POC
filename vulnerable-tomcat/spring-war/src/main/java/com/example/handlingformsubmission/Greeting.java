@@ -30,5 +30,11 @@ public class Greeting {
 	public void setCardNo(String cardNo) {
 		this.cardNo = cardNo;
 	}
-
+	private boolean injection;
+	public boolean isInjection() {
+		return injection;
+	}
+	public void setInjection(boolean injection) {
+		this.injection = injection;
+	}
 }

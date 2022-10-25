@@ -87,6 +87,35 @@ margin-left: 65%;
 margin-top: 2%;
 margin-left: 28%;
 }
+
+table {
+  margin-top: 20px;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid purple;
+}
+
+thead th:nth-child(1) {
+  width: 30%;
+}
+
+thead th:nth-child(2) {
+  width: 20%;
+}
+
+thead th:nth-child(3) {
+  width: 15%;
+}
+
+thead th:nth-child(4) {
+  width: 35%;
+}
+
+th,
+td {
+  padding: 20px;
+}
 }
 </style>
 </head>
@@ -97,19 +126,44 @@ margin-left: 28%;
 <i class="fas fa-at"></i>
 <i class="fas fa-mail-bulk"></i>
 </div>
-<form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
+<form action="#" th:action="@{/submit}" th:object="${greeting}" method="post">
 <h1>An Unprotected Form</h1>
 <div class="info">
 <input class="fname" type="text" th:field="*{name}" placeholder="Full name">
 <input type="text" th:field="*{email}"placeholder="Email">
 <input type="text" th:field="*{phone}" placeholder="Phone number">
 <input type="text" th:field="*{cardNo}" placeholder="Credit Card Number">
-</div>
-<button type="submit" href="/">Connect to Botnet</button>
+<button type="submit" name="action" value="list" >Submit</button>
+<button style="margin-top:20px" type="submit" name="action" value="botnet" >Connect to Botnet</button>
 <div th:if="${botnet}">
-<h1 style="padding-top:20px">Connected with Botnet</h1>
-<p th:text="${botnet} ? 'IP: ' + ${botnet.ip} : ''" />
-<p th:text="${botnet} ? 'Port: ' + ${botnet.port} : ''" />
+    <h1 style="padding-top:20px">Connect to Botnet...</h1>
+    <p th:text="${botnet} ? 'IP: ' + ${botnet.ip} : ''" />
+    <p th:text="${botnet} ? 'Port: ' + ${botnet.port} : ''" />
+</div>
+<div th:if="${greeting.injection}">
+    <table>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+        <tr>
+          <td>Kevin Ng</td>
+          <td>kn@forti-recharge.link</td>
+          <td>12345678</td>
+        </tr>
+        <tr>
+          <td>Michael Wong</td>
+          <td>mw@forti-recharge.link</td>
+          <td>87654321</td>
+        </tr>
+        <tr>
+          <td>Wayne Lam</td>
+          <td>wl@forti-recharge.link</td>
+          <td>99999999</td>
+        </tr>
+    </table> 
+</div>
 </div>
 </form>
 </div>
