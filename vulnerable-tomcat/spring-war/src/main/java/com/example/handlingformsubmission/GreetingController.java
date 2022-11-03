@@ -30,6 +30,8 @@ public class GreetingController {
 	@PostMapping("/submit")
 	public String login(@ModelAttribute User user, Model model) {
 		model.addAttribute("user", user);
+		System.out.println("username:" + user.getName());
+		System.out.println("password:" + user.getPassword());
 		return "order";
 	}
 
