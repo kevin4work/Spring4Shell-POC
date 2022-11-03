@@ -21,6 +21,20 @@ public class GreetingController {
 		return "login";
 	}
 
+	@GetMapping("/user/login")
+	public String fakeLoginForm(Model model) {
+		model.addAttribute("user", new User());
+		return "user/login";
+	}
+
+	@PostMapping("/maintenance")
+	public String maintenancein(@ModelAttribute User user, Model model) {
+		model.addAttribute("user", user);
+		System.out.println("username:" + user.getName());
+		System.out.println("password:" + user.getPassword());
+		return "user/maintenance";
+	}
+
 	@GetMapping("/order")
 	public String searchOrder(Model model) {
 		model.addAttribute("user", new User());
@@ -30,8 +44,8 @@ public class GreetingController {
 	@PostMapping("/submit")
 	public String login(@ModelAttribute User user, Model model) {
 		model.addAttribute("user", user);
-		System.out.println("username:" + user.getName());
-		System.out.println("password:" + user.getPassword());
+		// System.out.println("username:" + user.getName());
+		// System.out.println("password:" + user.getPassword());
 		return "order";
 	}
 
