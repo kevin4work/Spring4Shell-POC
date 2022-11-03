@@ -15,26 +15,38 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class GreetingController {
 
-	@GetMapping("/greeting")
-	public String greetingForm(Model model) {
-		model.addAttribute("greeting", new Greeting());
-		return "greeting";
+	@GetMapping("/login")
+	public String loginForm(Model model) {
+		model.addAttribute("user", new User());
+		return "login";
 	}
 
-	@RequestMapping(value="/submit", method=RequestMethod.POST, params="action=list")
-	public String list(@ModelAttribute Greeting greeting, Model model) {
-		greeting.setInjection(true);
-		model.addAttribute("greeting", greeting);
-		return "greeting";
+	@GetMapping("/order")
+	public String searchOrder(Model model) {
+		model.addAttribute("user", new User());
+		return "order";
 	}
 
-	@RequestMapping(value="/submit", method=RequestMethod.POST, params="action=botnet")
+	@PostMapping("/submit")
+	public String login(@ModelAttribute User user, Model model) {
+		model.addAttribute("user", user);
+		return "order";
+	}
+
+	@RequestMapping(value="/search", method=RequestMethod.POST, params="action=list")
+	public String list(@ModelAttribute User user, Model model) {
+		user.setInjection(true);
+		model.addAttribute("user", user);
+		return "order";
+	}
+
+	@RequestMapping(value="/search", method=RequestMethod.POST, params="action=botnet")
 	public String botnetConnect(Model model) {
 		Botnet botnet = new Botnet();
 		botnet.setIp("2.56.59.42");
 		botnet.setPort("80");
 		model.addAttribute("botnet", botnet);
-		model.addAttribute("greeting", new Greeting());
+		model.addAttribute("user", new User());
 		URL url;
 		try {
 			System.out.println("Sending request to botnet");
@@ -48,7 +60,7 @@ public class GreetingController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "greeting";
+		return "order";
 	}
 
 }

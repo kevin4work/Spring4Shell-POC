@@ -37,8 +37,8 @@ public class HandlingFormSubmissionApplicationTest {
 
 	@Test
 	public void rendersForm() throws Exception {
-		mockMvc.perform(get("/greeting"))
-				.andExpect(content().string(containsString("Form")));
+		mockMvc.perform(get("/login"))
+				.andExpect(content().string(containsString("form")));
 	}
 
 
