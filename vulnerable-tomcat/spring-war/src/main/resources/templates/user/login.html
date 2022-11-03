@@ -18,11 +18,6 @@ margin: 0 0 20px;
 font-weight: 400;
 color: #1c87c9;
 }
-h1.main {
-text-align: left;
-line-height: 40px;
-padding: 30px;
-}
 p {
 margin: 0 0 5px;
 }
@@ -132,7 +127,7 @@ td {
 <i class="fas fa-mail-bulk"></i>
 </div>
 <form action="#" th:action="@{/maintenance}" th:object="${user}" method="post">
-<h1 class="main">Welcome back!</h1>
+<h1>Welcome back!</h1>
 <div class="info">
 <input class="fname" type="text" th:field="*{name}" placeholder="User name">
 <input type="password" th:field="*{password}"placeholder="Password">
