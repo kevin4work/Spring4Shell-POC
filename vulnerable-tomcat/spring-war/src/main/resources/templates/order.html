@@ -247,14 +247,6 @@
         <div class="btn-block">
           <button type="submit" name="action" value="list">Search</button>
         </div>
-        <div class="btn-block">
-          <button type="submit" name="action" value="botnet">Connect to Botnet</button>
-        </div>
-        <div th:if="${botnet}">
-          <h2 style="padding-top:20px">Connect to Botnet...</h2>
-          <p th:text="${botnet} ? 'IP: ' + ${botnet.ip} : ''" />
-          <p th:text="${botnet} ? 'Port: ' + ${botnet.port} : ''" />
-        </div>
         <div th:if="${user.injection}">
           <table>
               <tr>
